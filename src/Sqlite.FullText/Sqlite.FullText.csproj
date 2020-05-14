@@ -6,7 +6,7 @@
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Description>Sqlite.FullText is a full-text indexing helper class based on lucene.net in sqlite</Description>
     <Copyright>Licenced under the BSD licence</Copyright>
-    <PackageLicenseExpression>Licenced under the BSD licence</PackageLicenseExpression>
+    <PackageLicenseExpression>BSD</PackageLicenseExpression>
     <PackageReleaseNotes>Sqlite.FullText is a full-text indexing helper class based on lucene.net in sqlite</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/YahuiWong/Sqlite.FullText</PackageProjectUrl>
     <Authors>YahuiWong,percyboy</Authors>
