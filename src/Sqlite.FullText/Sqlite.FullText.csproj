@@ -5,18 +5,26 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Description>Sqlite.FullText is a full-text indexing helper class based on lucene.net in sqlite</Description>
-    <Copyright>Licenced under the BSD licence</Copyright>
-    <PackageLicenseExpression>BSD</PackageLicenseExpression>
+    <Copyright>YahuiWong,percyboy</Copyright>
+    <PackageLicenseExpression></PackageLicenseExpression>
     <PackageReleaseNotes>Sqlite.FullText is a full-text indexing helper class based on lucene.net in sqlite</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/YahuiWong/Sqlite.FullText</PackageProjectUrl>
     <Authors>YahuiWong,percyboy</Authors>
     <Company></Company>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Lucene.Net" Version="4.8.0-beta00005" />
     <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00005" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.112.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\license\license.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

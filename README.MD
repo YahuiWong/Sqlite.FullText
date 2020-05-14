@@ -5,41 +5,41 @@
 Usage example
 
 ```C#
-			//×¢Òâ£º
-            // SQLiteFtsTokenizer Ö»ÓĞÔÚ PrepareToStart ·½·¨Ê±²ÅÄÜÈ¡µÃÒªÇĞ·ÖµÄ×Ö·û´®¡£
-            // Lucene µÄ Tokenizer Ö§³ÖÊµÀı»¯ºó¡¢Í¨¹ı Reset ·½·¨Ö¸¶¨ÒªÇĞ·ÖµÄ×Ö·û´®£»
-            // ¶ø TokenFilter ²»Ö§³Ö£¬±ØĞëÔÚÊµÀı»¯Ê±²ÅÄÜÖ¸¶¨¡£
+			//æ³¨æ„ï¼š
+            // SQLiteFtsTokenizer åªæœ‰åœ¨ PrepareToStart æ–¹æ³•æ—¶æ‰èƒ½å–å¾—è¦åˆ‡åˆ†çš„å­—ç¬¦ä¸²ã€‚
+            // Lucene çš„ Tokenizer æ”¯æŒå®ä¾‹åŒ–åã€é€šè¿‡ Reset æ–¹æ³•æŒ‡å®šè¦åˆ‡åˆ†çš„å­—ç¬¦ä¸²ï¼›
+            // è€Œ TokenFilter ä¸æ”¯æŒï¼Œå¿…é¡»åœ¨å®ä¾‹åŒ–æ—¶æ‰èƒ½æŒ‡å®šã€‚
             //
-            // µÚÒ»¸öÀı×ÓÓÃÊÂ¼ş·½Ê½½â¾öÕâÒ»Ã¬¶Ü£¬Ö§³Ö TokenStream£¨°üÀ¨ TokenFilter ºÍ Tokenizer£©¡£
-            // µÚ¶ş¸öÀı×Ó²»ÓÃÊÂ¼ş£¬Ö»Ö§³Ö Tokenizer£¬Ê¹ÓÃÏà¶Ô·½±ãĞ©¡£
-            // ¿ÉÒÔ¸ù¾İĞèÒªµ÷Õû¡£
+            // ç¬¬ä¸€ä¸ªä¾‹å­ç”¨äº‹ä»¶æ–¹å¼è§£å†³è¿™ä¸€çŸ›ç›¾ï¼Œæ”¯æŒ TokenStreamï¼ˆåŒ…æ‹¬ TokenFilter å’Œ Tokenizerï¼‰ã€‚
+            // ç¬¬äºŒä¸ªä¾‹å­ä¸ç”¨äº‹ä»¶ï¼Œåªæ”¯æŒ Tokenizerï¼Œä½¿ç”¨ç›¸å¯¹æ–¹ä¾¿äº›ã€‚
+            // å¯ä»¥æ ¹æ®éœ€è¦è°ƒæ•´ã€‚
 
-            //Ê¹ÓÃÊ¾Àı£º
+            //ä½¿ç”¨ç¤ºä¾‹ï¼š
             using (SQLiteConnection connection = new SQLiteConnection("Data Source=test.db"))
             {
                 CJKTokenizer tokenizer = new CJKTokenizer();
                 connection.Open();
-                tokenizer.RegisterMe(connection); //×¢²áÇĞ´ÊÆ÷
+                tokenizer.RegisterMe(connection); //æ³¨å†Œåˆ‡è¯å™¨
 
-                //½¨±í
+                //å»ºè¡¨
                 SQLiteCommand cmd = new SQLiteCommand(connection);
                 cmd.CommandText = "CREATE VIRTUAL TABLE docs USING fts3(title, content, tokenize=cjk)";
                 cmd.ExecuteNonQuery();
 
-                //²åÈëÊı¾İ
+                //æ’å…¥æ•°æ®
                 cmd.CommandText = "INSERT INTO docs (title, content) VALUES (?, ?)";
                 SQLiteParameter p1 = new SQLiteParameter();
                 p1.DbType = System.Data.DbType.String;
-                p1.Value = "²âÊÔ±êÌâ";
+                p1.Value = "æµ‹è¯•æ ‡é¢˜";
                 cmd.Parameters.Add(p1);
                 SQLiteParameter p2 = new SQLiteParameter();
                 p2.DbType = System.Data.DbType.String;
-                p2.Value = "²âÊÔÄÚÈİ";
+                p2.Value = "æµ‹è¯•å†…å®¹";
                 cmd.Parameters.Add(p2);
                 cmd.ExecuteNonQuery();
 
-                //¼ìË÷
-                cmd.CommandText = "SELECT docid, title, content FROM docs WHERE docs MATCH '²âÊÔ'";
+                //æ£€ç´¢
+                cmd.CommandText = "SELECT docid, title, content FROM docs WHERE docs MATCH 'æµ‹è¯•'";
                 SQLiteDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
